@@ -30,7 +30,8 @@ public class App extends Application {
     }
 
     private static javafx.scene.Parent loadFXML(String fxml) throws IOException {
-        return FXMLLoader.load(App.class.getResource(fxml + ".fxml"));
+        
+        return FXMLLoader.load(App.class.getResource("view/" + fxml + ".fxml"));
     }
 
     public static void main(String[] args) {
