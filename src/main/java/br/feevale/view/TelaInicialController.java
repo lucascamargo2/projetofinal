@@ -10,13 +10,15 @@ public class TelaInicialController {
     private Button btnPedido;
 
     @FXML
-    private void initialize() {
-        btnPedido.setOnAction(event -> {
-            try {
-                App.setRoot("TelaItens"); // depois você cria esta tela
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        });
+    public void initialize() {
+        btnPedido.setOnAction(event -> irParaTelaAtendimento());
+    }
+
+    private void irParaTelaAtendimento() {
+        try {
+            App.setRoot("TelaAtendimento"); 
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

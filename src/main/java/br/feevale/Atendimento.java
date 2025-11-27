@@ -1,54 +1,23 @@
 package br.feevale;
 
-public class Atendimento implements Atualizavel{
-    private int numero;
-    private String status;
+import java.time.LocalDateTime;
+
+public class Atendimento {
+
+    private int numeroAtendimento;
+    private Cliente cliente;
     private Pedido pedido;
-    
-    
-    public Atendimento(int numero, String status, Pedido pedido) {
-        this.numero = numero;
-        this.status = status;
+    private LocalDateTime dataHora;
+
+    public Atendimento(int numeroAtendimento, Cliente cliente, Pedido pedido) {
+        this.numeroAtendimento = numeroAtendimento;
+        this.cliente = cliente;
         this.pedido = pedido;
+        this.dataHora = LocalDateTime.now();
     }
 
-
-    public int getNumero() {
-        return numero;
-    }
-
-
-    public void setNumero(int numero) {
-        this.numero = numero;
-    }
-
-
-    public String getStatus() {
-        return status;
-    }
-
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-
-    public Pedido getPedido() {
-        return pedido;
-    }
-
-
-    public void setPedido(Pedido pedido) {
-        this.pedido = pedido;
-    }
-
-
-    @Override
-    public void atualizarStatus() {
-        if (status.equals("Em preparo")) {
-            status = "Pronto";
-        } else if (status.equals("Pronto")) {
-            status = "Entregue";
-        }
-    }
+    public int getNumeroAtendimento() { return numeroAtendimento; }
+    public Cliente getCliente() { return cliente; }
+    public Pedido getPedido() { return pedido; }
+    public LocalDateTime getDataHora() { return dataHora; }
 }

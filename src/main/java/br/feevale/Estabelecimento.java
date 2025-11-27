@@ -8,20 +8,27 @@ public class Estabelecimento {
     private List<Atendimento> atendimentos = new ArrayList<>();
     private int contador = 1;
 
-    // Gera número único
     public int gerarNumero() {
         return contador++;
     }
 
-    // Cria e registra atendimento
-    public Atendimento registrarAtendimento(Pedido pedido) {
+    public Atendimento registrarAtendimento(Cliente cliente, Pedido pedido) {
         int numero = gerarNumero();
-        Atendimento atendimento = new Atendimento(numero, null, pedido);
+        Atendimento atendimento = new Atendimento(numero, cliente, pedido);
         atendimentos.add(atendimento);
         return atendimento;
     }
 
-    // Retorna a lista de atendimentos
+    public boolean atualizarStatus(int numeroAtendimento, StatusPedido novo) {
+        for (Atendimento atendimento : atendimentos) {
+            if (atendimento.getNumeroAtendimento() == numeroAtendimento) {
+                atendimento.getPedido().setStatus(novo);
+                return true;
+            }
+        }
+        return false;
+    }
+
     public List<Atendimento> getAtendimentos() {
         return atendimentos;
     }
